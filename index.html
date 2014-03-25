@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <title>Cover Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/cover.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.min.js"></script>
+
+
+    <style>
+    </style>
+</head>
+
+<body>
+
+    <div ng-controller="CoverController">
+
+        <img ng-src="images/{{Background}}" style="position: fixed" class="img-responsive">
+
+        <!--<div ng-switch="bg()" ng-class="sample-show-hide">-->
+            <!--<img ng-switch-when="true" ng-src="images/{{Background}}" style="position: fixed" class="img-responsive">-->
+            <!--<img ng-switch-when="false" ng-src="images/{{Background}}" style="position: fixed" class="img-responsive">-->
+        <!--</div>-->
+
+
+        <div class="site-wrapper" style="position: fixed; z-index: 10;">
+
+
+            <div class="site-wrapper-inner">
+
+                <div class="cover-container">
+
+                    <div class="masthead clearfix">
+                        <div class="inner">
+                            <h2 class="masthead-brand">The Library</h2>
+                            <ul class="nav masthead-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="#">Join</a></li>
+                                <li><a href="#">Log-in</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="inner cover">
+                        <h1 class="cover-heading">Welcome to The Library</h1>
+                        <p class="lead">Located in B20, the Library is open every lunchtime. Come in, join up or start searching for books right now!</p>
+                        <p class="lead">
+                            <a href="#" class="btn btn-lg btn-success">Learn More</a>
+                        </p>
+
+                        <div class="input-group">
+                            <input id="SearchBox" type="text" class="form-control" placeholder="Start searching now!">
+                              <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Search</button>
+                              </span>
+                        </div><!-- /input-group -->
+
+                    </div>
+
+                    <div class="mastfoot">
+                        <blockquote>
+                            &quot;{{Quote.quote}}&quot;
+                            <footer>{{Quote.who}}</footer>
+                        </blockquote>
+                        <div class="inner">
+                            <p>&copy; <a href="http://www.rathmoreit.com">Rathmore IT Solutions</a>, 2014. All Rights Reserved.</p>
+                        </div>
+                    </div>
+
+                    <!--<div class="inner cover" style="height: 800px">-->
+                    <!--</div>-->
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/underscore-min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/docs.min.js"></script>
+<script src="js/CoverController.js"></script>
+</body>
+</html>
