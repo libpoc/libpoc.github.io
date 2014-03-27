@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="MemberDashboardApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/nvd3/nv.d3.css"/>
 
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
@@ -30,7 +31,7 @@
 
 </head>
 
-<body>
+<body ng-controller="MemberDashboardController">
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -84,14 +85,47 @@
 
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
+                    <!--<img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">-->
+
+                    <nvd3-pie-chart
+                            data="memberRatio"
+                            id="memberRatio"
+                            margin="{left:0,top:0,bottom:0,right:0}"
+                            x="xFunction()"
+                            y="yFunction()"
+                            showLabels="true"
+                            pieLabelsOutside="false"
+                            showValues="true"
+
+                            tooltips="true"
+                            showlegend="true"
+                            description="descriptionFunction()">
+                        <svg></svg>
+                    </nvd3-pie-chart>
+
+                    <h4>Member Breakdown</h4>
+                    <span class="text-muted">Ratio of member types</span>
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
+                    <nvd3-pie-chart
+                            data="ouRatio"
+                            id="ouRatio"
+                            margin="{left:0,top:0,bottom:0,right:0}"
+                            x="xFunction()"
+                            y="yFunction()"
+
+                            pieLabelsOutside="false"
+                            showValues="true"
+
+                            tooltips="true"
+                            showlegend="true"
+
+                            description="descriptionFunction()">
+                        <svg></svg>
+                    </nvd3-pie-chart>
+
+                    <h4>Breakdown By OU</h4>
+                    <span class="text-muted">How many by OU</span>
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
                     <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
@@ -106,7 +140,7 @@
             </div>
 
             <!--<h2 class="sub-header">Members</h2>-->
-            <div ng-controller="MemberDashboardController" class="table-responsive" ng-controller="MemberDashboardController">
+            <div class="table-responsive" ng-controller="MemberDashboardController">
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -118,20 +152,31 @@
                         <th>OU</th>
                         <th>Date Joined</th>
                         <th>Last Loan</th>
-                        <th>On Loan/Overdue/Total Loan</th>
+                        <th style="text-align: center">On Loan</th>
+                        <th style="text-align: center">Overdue</th>
+                        <th style="text-align: center">Total Loan</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="member in Members">
-                        <td>&nbsp;</td>
+                        <td><input type="checkbox"></td>
                         <td>{{member.number}}</td>
                         <td>{{member.surname}}</td>
                         <td>{{member.forename}}</td>
-                        <td>{{member.type}}</td>
+                        <td>
+                            <div ng-switch="member.type">
+                                <span ng-switch-when="DE">Normal</span>
+                                <span ng-switch-when="BU">Bulk</span>
+                                <span ng-switch-when="LI">Librarian</span>
+                                <span ng-switch-when="AD">Admin</span>
+                            </div>
+                        </td>
                         <td>{{member.ou}}</td>
                         <td>{{member.date_joined}}</td>
                         <td>{{member.last_loan}}</td>
-                        <td>{{member.onloan}}/{{member.overdue}}/{{member.totalloans}}</td>
+                        <td style="text-align: center">{{member.onloan}}</td>
+                        <td style="text-align: center">{{member.overdue}}</td>
+                        <td style="text-align: center">{{member.totalloans}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -147,5 +192,15 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/docs.min.js"></script>
 <script src="js/MemberDashboardController.js"></script>
+
+<!--<script src="bower_components/angular/angular.js"></script>-->
+<script src="bower_components/d3/d3.js"></script>
+<script src="bower_components/nvd3/nv.d3.js"></script>
+<script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+
+<script>
+    var app = angular.module("MemberDashboardApp", ['nvd3ChartDirectives']);
+</script>
+
 </body>
 </html>

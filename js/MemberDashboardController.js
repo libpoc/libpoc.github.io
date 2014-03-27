@@ -1,5 +1,77 @@
 function MemberDashboardController ($scope) {
 
+    $scope.MembersInfo = {
+        numDE : 515,
+        numST : 54,
+        numLI : 11,
+        numGO : 1
+    };
+
+    $scope.memberRatio = [
+        {
+            key: "Normal",
+            y: 515
+        },
+        {
+            key: "Bulk",
+            y: 54
+        },
+        {
+            key: "Librarian",
+            y: 11
+        },
+        {
+            key: "Admin",
+            y: 1
+        }
+    ];
+
+    $scope.ouRatio = [
+        {
+            key: "1st Year",
+            y: 44
+        },
+        {
+            key: "2nd Year",
+            y: 37
+        },
+        {
+            key: "3rd Year",
+            y: 66
+        },
+        {
+            key: "4th Year",
+            y: 61
+        },
+        {
+            key: "5th Year",
+            y: 49
+        },
+        {
+            key: "6th Year",
+            y: 32
+        }
+
+    ];
+
+
+    $scope.xFunction = function(){
+        return function(d) {
+            return d.key;
+        };
+    }
+    $scope.yFunction = function(){
+        return function(d) {
+            return d.y;
+        };
+    }
+
+    $scope.descriptionFunction = function(){
+        return function(d){
+            return d.key;
+        }
+    };
+
     $scope.Members = [
         {
             number          : 'B7564832',
