@@ -123,6 +123,24 @@
                 </div>
             </div>
 
+            <div class="row placeholders">
+                <div class="col-xs-6 col-sm-12 placeholder" style="height: 250px;">
+
+                    <nvd3-line-chart
+                            data="Last30Days"
+                            showXAxis="true"
+                            showYAxis="true"
+                            tooltips="true"
+                            interactive="true"
+                            showtitle="true"
+                            showlegend="true"
+                            xAxisTickFormat="xAxisTickFormat()">
+                    </nvd3-line-chart>
+
+                    <h3>Last 30 Days Activity</h3>
+
+                </div>
+            </div>
 
         </div>
     </div>
@@ -134,9 +152,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/docs.min.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
 <script src="js/OverviewDashboardController.js"></script>
 
 <!--<script src="bower_components/angular/angular.js"></script>-->
+
 <script src="bower_components/d3/d3.js"></script>
 <script src="bower_components/nvd3/nv.d3.js"></script>
 <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>

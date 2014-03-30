@@ -124,5 +124,7 @@ function MemberDashboardController ($scope) {
 
     ];
 
+    $scope.showLegend = false;
+
 
 }
