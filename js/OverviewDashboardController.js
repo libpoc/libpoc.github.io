@@ -1,5 +1,19 @@
 function OverviewDashboardController ($scope, $timeout) {
 
+    $scope.today = [
+        {
+            "key" : "Loans",
+            "values" : []
+        },
+        {
+            "key" : "Returns",
+            "values" : []
+        }
+    ];
+
+
+
+
     $scope.Overview = {
         stock : {
             total : _.random(5000, 10000),
@@ -29,15 +43,34 @@ function OverviewDashboardController ($scope, $timeout) {
         }
     ];
 
+
+    filterClosedDays = function (x) {
+        return x[0].getDay() != 0 && x[0].getDay() != 6;
+    }
+
+
     var now = new Date(Date.now()), dd={};
-    for (var i = 1; i <= 30; i++) {
+    for (var i = 1; i <= 40; i++) {
         dd = new Date().setDate (now.getDate() - i);
         last30Days[0].values.push ([new Date(dd), _.random(20,60)]);
         last30Days[1].values.push ([new Date(dd), _.random(5,33)]);
         last30Days[2].values.push ([new Date(dd), _.random(0,7)]);
     }
 
+
+    last30Days[0].values = _(last30Days[0].values).filter (filterClosedDays);
+    last30Days[1].values = _(last30Days[1].values).filter (filterClosedDays);
+    last30Days[2].values = _(last30Days[2].values).filter (filterClosedDays);
+
+    last30Days[0].values = _(last30Days[0].values).first (30);
+    last30Days[1].values = _(last30Days[1].values).first (30);
+    last30Days[2].values = _(last30Days[2].values).first (30);
+
     $scope.Last30Days = last30Days;
+
+
+    // Filter out days the library is not open!
+
 
     $scope.xAxisTickFormat = function(){
         return function(d){
@@ -74,6 +107,22 @@ function OverviewDashboardController ($scope, $timeout) {
 
     $timeout (updateLoans, _.random(3,15)*1000);
     $timeout (updateIns, _.random(5,20)*1000);
+
+
+    var lastRefreshed = function () {
+        $scope.About = true;
+        $scope.Refreshed = moment($scope.BaselineTime).fromNow();
+        $timeout(lastRefreshed, 60000);
+    }
+
+    $scope.About = false;
+    $scope.BaselineTime = new Date (Date.now());
+    $scope.Refreshed = moment($scope.BaselineTime).fromNow();
+
+    $timeout (lastRefreshed, 65000);
+
+
+
 
 }
 
