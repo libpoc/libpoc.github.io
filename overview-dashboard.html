@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" ng-app="MemberDashboardApp">
+<html lang="en" ng-app="OverviewDashboardApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,7 +82,7 @@
             </ul>
             -->
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
             <h1 class="page-header">Overview Dashboard
                 <small>Last updated less than a minute ago</small>
             </h1>
@@ -105,6 +105,12 @@
                 </div>
             </div>
 
+            <!--<div class="row placeholders">-->
+                <!--<div class="col-xs-6 col-sm-12 placeholder">-->
+                    <!--<h3>Today's Activity</h3>-->
+                 <!--</div>-->
+            <!--</div>-->
+
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-4 placeholder">
                     <h1 style="font-weight: bold;">{{Overview.today.out}}</h1>
@@ -126,6 +132,8 @@
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-12 placeholder" style="height: 250px;">
 
+                    <h3>Last 30 Days Activity</h3>
+
                     <nvd3-line-chart
                             data="Last30Days"
                             showXAxis="true"
@@ -137,7 +145,7 @@
                             xAxisTickFormat="xAxisTickFormat()">
                     </nvd3-line-chart>
 
-                    <h3>Last 30 Days Activity</h3>
+
 
                 </div>
             </div>
@@ -162,7 +170,7 @@
 <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
 
 <script>
-    var app = angular.module("MemberDashboardApp", ['nvd3ChartDirectives']);
+    var app = angular.module("OverviewDashboardApp", ['ngAnimate','nvd3ChartDirectives']);
 </script>
 
 </body>
