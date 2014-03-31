@@ -42,7 +42,8 @@ function OverviewDashboardController ($scope, $timeout) {
     $scope.xAxisTickFormat = function(){
         return function(d){
 //                    return d3.time.format('%X')(new Date(d));  //uncomment for time format
-            return d3.time.format('%x')(new Date(d));  //uncomment for date format
+           // return d3.time.format('%x')(new Date(d));  //uncomment for date format
+            return d3.time.format('%a %d %b')(new Date(d));  //uncomment for date format
         }
     }
 
