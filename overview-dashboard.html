@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" ng-app="MemberDashboardApp">
+<html lang="en" ng-app="OverviewDashboardApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,10 +82,8 @@
             </ul>
             -->
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Overview Dashboard
-                <small>Last updated less than a minute ago</small>
-            </h1>
+        <div ng-cloak class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
+            <h1 class="page-header">Overview Dashboard</h1>
 
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-4 placeholder">
@@ -104,6 +102,12 @@
                     <span class="text-muted">Number of items overdue</span>
                 </div>
             </div>
+
+            <!--<div class="row placeholders">-->
+                <!--<div class="col-xs-6 col-sm-12 placeholder">-->
+                    <!--<h3>Today's Activity</h3>-->
+                 <!--</div>-->
+            <!--</div>-->
 
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-4 placeholder">
@@ -124,7 +128,9 @@
             </div>
 
             <div class="row placeholders">
-                <div class="col-xs-6 col-sm-12 placeholder" style="height: 250px;">
+                <div class="col-xs-6 col-sm-12 placeholder" style="height: 300px;">
+
+                    <h3>Last 30 Days Activity</h3>
 
                     <nvd3-line-chart
                             data="Last30Days"
@@ -137,10 +143,16 @@
                             xAxisTickFormat="xAxisTickFormat()">
                     </nvd3-line-chart>
 
-                    <h3>Last 30 Days Activity</h3>
+
 
                 </div>
             </div>
+
+            <div class="row placeholders pull-right" style="margin-top: 5px">
+                <div class="col-xs-6 col-sm-12 placeholder">
+                    <p><small>Last refreshed <span ng-show="About">about </span>{{Refreshed}}</small></p>
+                </div>
+
 
         </div>
     </div>
@@ -153,6 +165,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/docs.min.js"></script>
 <script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/moment/moment.js"></script>
 <script src="js/OverviewDashboardController.js"></script>
 
 <!--<script src="bower_components/angular/angular.js"></script>-->
@@ -162,7 +175,7 @@
 <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
 
 <script>
-    var app = angular.module("MemberDashboardApp", ['nvd3ChartDirectives']);
+    var app = angular.module("OverviewDashboardApp", ['ngAnimate','nvd3ChartDirectives']);
 </script>
 
 </body>
