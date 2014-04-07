@@ -57,7 +57,6 @@ function OverviewDashboardController ($scope, $timeout) {
         last30Days[2].values.push ([new Date(dd), _.random(0,7)]);
     }
 
-
     last30Days[0].values = _(last30Days[0].values).filter (filterClosedDays);
     last30Days[1].values = _(last30Days[1].values).filter (filterClosedDays);
     last30Days[2].values = _(last30Days[2].values).filter (filterClosedDays);
