@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/registration.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.min.js"></script>
+
+</head>
+<body>
+
+<div class="container" ng-controller="RegistrationController">
+
+    <form class="form-signin" role="form">
+        <h2 class="form-signin-heading">Please register</h2>
+        <input type="text" class="form-control" placeholder="Your first name" ng-model="FirstName" required autofocus>
+        <input type="text" class="form-control" placeholder="Your last name" ng-model="LastName" required>
+        <hr>
+        <input type="email" class="form-control" placeholder="Email address" ng-model="Email1" required >
+        <input type="email" class="form-control" placeholder="Confirm email address" ng-model="Email2" required >
+        <hr>
+        <input type="password" class="form-control" placeholder="Password" ng-model="Password1" required>
+        <input type="password" class="form-control" placeholder="Confirm password" ng-model="Password2" required>
+        <hr>
+        <label>I am&nbsp;
+            <select ng-model="Type" ng-options="o.option for o in Types">
+                <option>please select</option>
+            </select>
+        </label>
+        <label ng-show="Type.value==='st'">&nbsp;in class&nbsp;
+            <select>
+                <option>please select</option>
+                <option>1 Brandon</option>
+                <option>2 Bunratty</option>
+            </select>
+        </label>
+        <span ng-show="Type.value==='na'">
+            &nbsp;&nbsp;
+            <input type="text" placeholder="Please describe" ng-model="Other">
+        </span>
+
+        <hr>
+        <label class="checkbox">&nbsp;I have read and agree to the <a>Terms & Conditions</a>
+            <input type="checkbox" class="checkbox-inline" ng-checked="AgreeTnC">
+        </label>
+        <hr>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register now</button>
+    </form>
+
+</div> <!-- /container -->
+
+<script src="js/underscore-min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/docs.min.js"></script>
+<script src="js/RegistrationController.js"></script>
+
+
+</body>
+</html>
